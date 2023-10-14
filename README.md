@@ -35,7 +35,7 @@ reboot
 ```
 ## AP MODE howto
 ```
-> iwconfig
+iwconfig
 wlp0s11u1  IEEE 802.11bgn  ESSID:"MYWIFI"  Nickname:"<WIFI@REALTEK>"
           Mode:Master  Frequency:2.412 GHz  Access Point: 54:E4:BD:C6:3D:67   
           Bit Rate:72.2 Mb/s   Sensitivity:0/0  
@@ -45,7 +45,7 @@ wlp0s11u1  IEEE 802.11bgn  ESSID:"MYWIFI"  Nickname:"<WIFI@REALTEK>"
           Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
           Tx excessive retries:0  Invalid misc:0   Missed beacon:0
 
-> nmcli d
+nmcli d
 DEVICE             TYPE      STATE                 CONNECTION    
 wlp0s11u1          wifi      подключено            MYWIFI        
 enp0s3             ethernet  подключено            System enp0s3 
