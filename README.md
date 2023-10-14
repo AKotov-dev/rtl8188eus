@@ -7,7 +7,7 @@ The `rtl8xxxu` kernel module for Realtek `rtl8188eus`, `rtl8188eu` and `rtl8188e
 
 You will receive: kernel module `8188eu.ko.xz` and config for disabling the module by default - `realtek.conf`:
 ```
-/usr/lib/modules/6.4.9-desktop-4.mga9/kernel/drivers/net/wireless/8188eu.ko.xz  
+/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/8188eu.ko.xz  
 /etc/modprobe.d/realtek.conf
 ```
 ```
