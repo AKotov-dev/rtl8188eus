@@ -2,8 +2,6 @@
 
 # RTL8188EUS, RTL8188EU, RTL8188ETV WiFi drivers
 
-screen
-
 # Howto build/install (Mageia-9)
 Модуль ядра rtl8xxxu для WiFi-адаптеров Realtek rtl8188eus, rtl8188eu и rtl8188etv не обеспечивает их работу в режиме точки доступа (AP). Нужно заменить модуль rtl8xxxu на 8188eu...
 
