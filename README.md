@@ -21,21 +21,54 @@
 * Up to kernel v6.5+
 ... And a bunch of various wifi chipsets
 
-# Howto build/install
-1. Compile and install the driver:
+# Howto build/install (Mageia-9)
+Модуль ядра rtl8xxxu для WiFi-адаптеров Realtek rtl8188eus, rtl8188eu и rtl8188etv не обеспечивает их работу в режиме точки доступа (AP). Нужно заменить модуль rtl8xxxu на 8188eu...
+
+#Будут получены: модуль ядра `8188eu.ko.xz` и конфиг отключения модуля по дефолту - `realtek.conf`
+/usr/lib/modules/6.4.9-desktop-4.mga9/kernel/drivers/net/wireless/8188eu.ko
+/etc/modprobe.d/realtek.conf
 ```
+#Обновляем источники + ставим нужные пакеты для сборки модуля
+urpmi.update -a
+urpmi --auto kernel-devel kernel-source make gcc automake bison flex git
+
+#Ссылка; Требуется для сборки (разница Makefile)
+ln -s /usr/src/kernel-$(uname -r) /lib/modules/$(uname -r)/build
+
+#Создаём конфиг ядра:
+cd /usr/src/kernel-$(uname -r); make defconfig; make modules_prepare
+
+#Скачиваем исходники модуля 8188eus, собираем и устанавливаем
+mkdir /123 && cd /123 && git clone https://github.com/gglluukk/rtl8188eus.git
 cd rtl8188eus
-make && sudo make install
+make && make install
+#Сжимаем модуль и обновляем список модулей
+xz /usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/8188eu.ko; depmod -a
+
+#Забываем драйвер rtl8xxxu, делаем 8188eu основным и перезагружаемся
+echo 'blacklist r8188eu' | tee -a '/etc/modprobe.d/realtek.conf'
+echo 'blacklist rtl8xxxu' | tee -a '/etc/modprobe.d/realtek.conf'
+reboot
 ```
-2. Blacklist another drivers in order to use this one:
 ```
-echo 'blacklist r8188eu' | sudo tee -a '/etc/modprobe.d/realtek.conf'
-echo 'blacklist rtl8xxxu' | sudo tee -a '/etc/modprobe.d/realtek.conf'
-```
-3. `reboot` or remove all drivers related to RTL8188 and reload this one:
-```
-rmmod r8188eu rtl8xxxu 8188eu
-modprobe 8188eu
+#Проверка точки доступа (Access Point)
+> iwconfig - посмотреть состояние точки доступа:
+wlp0s11u1  IEEE 802.11bgn  ESSID:"MYWIFI"  Nickname:"<WIFI@REALTEK>"
+          Mode:Master  Frequency:2.412 GHz  Access Point: 54:E4:BD:C6:3D:67   
+          Bit Rate:72.2 Mb/s   Sensitivity:0/0  
+          Retry:off   RTS thr:off   Fragment thr:off
+          Power Management:off
+          Link Quality=61/100  Signal level=51/100  Noise level=0/100
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+
+> nmcli d
+DEVICE             TYPE      STATE                 CONNECTION    
+wlp0s11u1          wifi      подключено            MYWIFI        
+enp0s3             ethernet  подключено            System enp0s3 
+tun2socks          tun       подключено (внешнее)  tun2socks     
+p2p-dev-wlp0s11u1  wifi-p2p  отключено             --            
+lo                 loopback  без управления        --           
 ```
 
 # MONITOR MODE howto
