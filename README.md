@@ -7,7 +7,7 @@
 
 Будут получены: модуль ядра `8188eu.ko.xz` и конфиг отключения модуля по дефолту - `realtek.conf`:  
 ```
-/usr/lib/modules/6.4.9-desktop-4.mga9/kernel/drivers/net/wireless/8188eu.ko  
+/usr/lib/modules/6.4.9-desktop-4.mga9/kernel/drivers/net/wireless/8188eu.ko.xz  
 /etc/modprobe.d/realtek.conf
 ```
 ```
