@@ -3,38 +3,38 @@
 ## RTL8188EUS, RTL8188EU, RTL8188ETV WiFi drivers
 
 ## Howto build/install (Mageia-9)
-Модуль ядра rtl8xxxu для WiFi-адаптеров Realtek rtl8188eus, rtl8188eu и rtl8188etv не обеспечивает их работу в режиме точки доступа (AP). Нужно заменить модуль rtl8xxxu на 8188eu...
+The `rtl8xxxu` kernel module for Realtek `rtl8188eus`, `rtl8188eu` and `rtl8188etv` WiFi adapters does not ensure their operation in access point (AP) mode. You need to replace the `rtl8xxxu` module with `8188eu`.
 
-Будут получены: модуль ядра `8188eu.ko.xz` и конфиг отключения модуля по дефолту - `realtek.conf`:  
+You will receive: kernel module `8188eu.ko.xz` and config for disabling the module by default - `realtek.conf`:
 ```
 /usr/lib/modules/6.4.9-desktop-4.mga9/kernel/drivers/net/wireless/8188eu.ko.xz  
 /etc/modprobe.d/realtek.conf
 ```
 ```
-#Обновляем источники + ставим нужные пакеты для сборки модуля
+#Update sources + install the necessary packages to build the module
 urpmi.update -a
 urpmi --auto kernel-devel kernel-source make gcc automake bison flex git
 
-#Ссылка; Требуется для сборки (разница Makefile)
+#Link; Required for assembly (Makefile difference)
 ln -s /usr/src/kernel-$(uname -r) /lib/modules/$(uname -r)/build
 
-#Создаём конфиг ядра:
+#Creating a kernel config
 cd /usr/src/kernel-$(uname -r); make defconfig; make modules_prepare
 
-#Скачиваем исходники модуля 8188eus, собираем и устанавливаем
+#Download the sources of the 8188eus module, assemble and install
 mkdir /123 && cd /123 && git clone https://github.com/AKotov-dev/rtl8188eus.git
 cd rtl8188eus
 make && make install
-#Сжимаем модуль и обновляем список модулей
+#Compress the module and update the list of modules
 xz /usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/8188eu.ko; depmod -a
 
-#Забываем драйвер rtl8xxxu, делаем 8188eu основным и перезагружаемся
+#We forget the rtl8xxxu driver, make 8188eu the main one and reboot
 echo 'blacklist r8188eu' | tee -a '/etc/modprobe.d/realtek.conf'
 echo 'blacklist rtl8xxxu' | tee -a '/etc/modprobe.d/realtek.conf'
 reboot
 ```
 ```
-#Проверка точки доступа (Access Point)
+#Checking the access point (Access Point)
 > iwconfig
 wlp0s11u1  IEEE 802.11bgn  ESSID:"MYWIFI"  Nickname:"<WIFI@REALTEK>"
           Mode:Master  Frequency:2.412 GHz  Access Point: 54:E4:BD:C6:3D:67   
