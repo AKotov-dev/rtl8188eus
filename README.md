@@ -33,8 +33,8 @@ echo 'blacklist r8188eu' | tee -a '/etc/modprobe.d/realtek.conf'
 echo 'blacklist rtl8xxxu' | tee -a '/etc/modprobe.d/realtek.conf'
 reboot
 ```
+## AP MODE howto
 ```
-#Checking the Access Point
 > iwconfig
 wlp0s11u1  IEEE 802.11bgn  ESSID:"MYWIFI"  Nickname:"<WIFI@REALTEK>"
           Mode:Master  Frequency:2.412 GHz  Access Point: 54:E4:BD:C6:3D:67   
@@ -53,7 +53,6 @@ tun2socks          tun       подключено (внешнее)  tun2socks
 p2p-dev-wlp0s11u1  wifi-p2p  отключено             --            
 lo                 loopback  без управления        --           
 ```
-
 ## MONITOR MODE howto
 Use these steps to enter monitor mode.
 ```
