@@ -22,7 +22,7 @@ ln -s /usr/src/kernel-$(uname -r) /lib/modules/$(uname -r)/build
 cd /usr/src/kernel-$(uname -r); make defconfig; make modules_prepare
 
 #Скачиваем исходники модуля 8188eus, собираем и устанавливаем
-mkdir /123 && cd /123 && git clone https://github.com/gglluukk/rtl8188eus.git
+mkdir /123 && cd /123 && git clone https://github.com/AKotov-dev/rtl8188eus.git
 cd rtl8188eus
 make && make install
 #Сжимаем модуль и обновляем список модулей
