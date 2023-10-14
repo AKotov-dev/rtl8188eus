@@ -1,25 +1,8 @@
 ## rtl8188eus v5.3.9
 
-# Realtek rtl8188eus &amp; rtl8188eu &amp; rtl8188etv WiFi drivers
+# RTL8188EUS, RTL8188EU, RTL8188ETV WiFi drivers
 
-[![Monitor mode](https://img.shields.io/badge/monitor%20mode-supported-brightgreen.svg)](#)
-[![Frame Injection](https://img.shields.io/badge/frame%20injection-supported-brightgreen.svg)](#)
-[![MESH Mode](https://img.shields.io/badge/mesh%20mode-supported-brightgreen.svg)](#)
-[![GitHub issues](https://img.shields.io/github/issues/aircrack-ng/rtl8188eus.svg)](https://github.com/aircrack-ng/rtl8188eus/issues)
-[![GitHub forks](https://img.shields.io/github/forks/aircrack-ng/rtl8188eus.svg)](https://github.com/aircrack-ng/rtl8188eus/network)
-[![GitHub stars](https://img.shields.io/github/stars/aircrack-ng/rtl8188eus.svg)](https://github.com/aircrack-ng/rtl8188eus/stargazers)
-[![GitHub license](https://img.shields.io/github/license/aircrack-ng/rtl8812au.svg)](https://github.com/aircrack-ng/rtl8188eus/blob/master/LICENSE)<br>
-[![Android](https://img.shields.io/badge/android%20(8)-supported-brightgreen.svg)](#)
-[![aircrack-ng](https://img.shields.io/badge/aircrack--ng-supported-blue.svg)](#)
-
-
-# Supports
-* Android 12/13
-* MESH Support
-* Monitor mode
-* Frame injection
-* Up to kernel v6.5+
-... And a bunch of various wifi chipsets
+screen
 
 # Howto build/install (Mageia-9)
 Модуль ядра rtl8xxxu для WiFi-адаптеров Realtek rtl8188eus, rtl8188eu и rtl8188etv не обеспечивает их работу в режиме точки доступа (AP). Нужно заменить модуль rtl8xxxu на 8188eu...
