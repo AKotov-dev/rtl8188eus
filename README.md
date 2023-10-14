@@ -52,7 +52,7 @@ reboot
 ```
 ```
 #Проверка точки доступа (Access Point)
-> iwconfig - посмотреть состояние точки доступа:
+> iwconfig
 wlp0s11u1  IEEE 802.11bgn  ESSID:"MYWIFI"  Nickname:"<WIFI@REALTEK>"
           Mode:Master  Frequency:2.412 GHz  Access Point: 54:E4:BD:C6:3D:67   
           Bit Rate:72.2 Mb/s   Sensitivity:0/0  
