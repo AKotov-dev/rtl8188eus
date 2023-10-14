@@ -34,7 +34,7 @@ echo 'blacklist rtl8xxxu' | tee -a '/etc/modprobe.d/realtek.conf'
 reboot
 ```
 ```
-#Checking the access point (Access Point)
+#Checking the Access Point
 > iwconfig
 wlp0s11u1  IEEE 802.11bgn  ESSID:"MYWIFI"  Nickname:"<WIFI@REALTEK>"
           Mode:Master  Frequency:2.412 GHz  Access Point: 54:E4:BD:C6:3D:67   
