@@ -5,7 +5,7 @@
 # Howto build/install (Mageia-9)
 Модуль ядра rtl8xxxu для WiFi-адаптеров Realtek rtl8188eus, rtl8188eu и rtl8188etv не обеспечивает их работу в режиме точки доступа (AP). Нужно заменить модуль rtl8xxxu на 8188eu...
 
-Будут получены: модуль ядра `8188eu.ko.xz` и конфиг отключения модуля по дефолту - `realtek.conf`
+Будут получены: модуль ядра `8188eu.ko.xz` и конфиг отключения модуля по дефолту - `realtek.conf`  
 /usr/lib/modules/6.4.9-desktop-4.mga9/kernel/drivers/net/wireless/8188eu.ko  
 /etc/modprobe.d/realtek.conf
 ```
