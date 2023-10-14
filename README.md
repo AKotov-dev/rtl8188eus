@@ -1,8 +1,8 @@
-## rtl8188eus v5.3.9
+### rtl8188eus v5.3.9
 
-# RTL8188EUS, RTL8188EU, RTL8188ETV WiFi drivers
+## RTL8188EUS, RTL8188EU, RTL8188ETV WiFi drivers
 
-# Howto build/install (Mageia-9)
+## Howto build/install (Mageia-9)
 Модуль ядра rtl8xxxu для WiFi-адаптеров Realtek rtl8188eus, rtl8188eu и rtl8188etv не обеспечивает их работу в режиме точки доступа (AP). Нужно заменить модуль rtl8xxxu на 8188eu...
 
 Будут получены: модуль ядра `8188eu.ko.xz` и конфиг отключения модуля по дефолту - `realtek.conf`:  
@@ -54,7 +54,7 @@ p2p-dev-wlp0s11u1  wifi-p2p  отключено             --
 lo                 loopback  без управления        --           
 ```
 
-# MONITOR MODE howto
+## MONITOR MODE howto
 Use these steps to enter monitor mode.
 ```
 sudo airmon-ng check kill
@@ -67,7 +67,7 @@ Frame injection test may be performed with
 sudo aireplay-ng -9 <interface>
 ```
 
-# NetworkManager configuration
+## NetworkManager configuration
 Add these lines below to "NetworkManager.conf" and ADD YOUR ADAPTER MAC below [keyfile]
 This will make the Network-Manager ignore the device, and therefore don't cause problems.
 ```
@@ -87,7 +87,7 @@ plugins=keyfile
 unmanaged-devices=mac:A7:A7:A7:A7:A7
 ```
 
-# Credits
+## Credits
 Realtek       - https://www.realtek.com<br>
 Alfa Networks - https://www.alfa.com.tw<br>
 aircrack-ng.  - https://www.aircrack-ng.org<br>
